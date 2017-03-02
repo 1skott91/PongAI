@@ -7,16 +7,15 @@ public class Paddle
     static final int WIDTH = 10;
     static final int HEIGHT = 70;
     
-    
-    int x, y;
+    Vector location;
+    Vector velocity;
     
     private boolean upPressed = false;
     private boolean downPressed = false;
     
     public Paddle (int startX, int startY)
     {
-    	x = startX;
-    	y = startY;
+    	location = new Vector (startX, startY, 0);
     }
     
 	public void keyTyped(KeyEvent e) {}
@@ -48,24 +47,25 @@ public class Paddle
     
 	public void botAi()
 	{
-		int ballCenter = Pong.panel.ball.y + (Pong.panel.ball.DIAMETER/2);
-		int center = Pong.panel.p1.y + (HEIGHT/2);
+		int ballCenter = Pong.panel.ball.location.y + (Pong.panel.ball.DIAMETER/2);
+		int paddleCenter = Pong.panel.p1.location.y + (HEIGHT/2);
 		int middlePoint = Pong.WIDTH / 2; 
+		double paddleSpeed = 4.5;
 		
-		if (middlePoint > Pong.panel.ball.x)
+		if (middlePoint > Pong.panel.ball.location.x)
 		{
-			if (ballCenter < center)
+			if (ballCenter < paddleCenter)
 			{
-				if (Pong.panel.p1.y - 5 > 0) 
+				if (Pong.panel.p1.location.y - 5 > 0) 
 		           {
-						Pong.panel.p1.y -= 4.5;
+						Pong.panel.p1.location.y -= paddleSpeed;
 		           }
 			}
-			if (ballCenter > center)
+			if (ballCenter > paddleCenter)
 			{
-				if (Pong.panel.p1.y + 5 + HEIGHT < 400) 
+				if (Pong.panel.p1.location.y + 5 + HEIGHT < 400) 
 		           {
-						Pong.panel.p1.y += 4.5;
+						Pong.panel.p1.location.y += paddleSpeed;
 		           }
 			}
 		}
@@ -73,41 +73,44 @@ public class Paddle
 	
 	public void playerControls()
 	{
+		
+		velocity = new Vector (0, 5, 0);
+		
 		 if (upPressed) 
 		 {
-	       if (y - 5 > 0) 
+	       if (location.y - 5 > 0) 
 	       {
-	           y -= 5;
+	           location.sub(velocity);
 	       }
 		 }
 
 		 if (downPressed) 
 		 {
-			if (y + 5 + HEIGHT < 400) 
+			if (location.y + 5 + HEIGHT < 400) 
 			{
-			y += 5;
+				location.add(velocity);
 			}
 		 }
 	}
     
-    public Rectangle getBounds() 
-    {
-        return new Rectangle(x, y, WIDTH, HEIGHT);
-    }
+//    public Rectangle getBounds() 
+//    {
+//        return new Rectangle(x, y, WIDTH, HEIGHT);
+//    }
     
     public void paint(Graphics2D g) 
     {
-        g.fillRect(x, y, WIDTH, HEIGHT);
+        g.fillRect(location.x, location.y, WIDTH, HEIGHT);
     }
     
     public int getX()
     {
-    	return x;
+    	return location.x;
     }
     
     public int getY()
     {
-    	return y;
+    	return location.y;
     }
     
     public int getHeight()

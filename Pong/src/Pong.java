@@ -22,13 +22,13 @@ public class Pong extends JFrame
 	{
 		Thread.sleep(2000);
 		
-        panel.ball.x = WIDTH / 2 - panel.ball.DIAMETER / 2;
-        panel.ball.y = HEIGHT / 2 - panel.ball.DIAMETER /2;
+        panel.ball.location.x = WIDTH / 2 - panel.ball.DIAMETER / 2;
+        panel.ball.location.y = HEIGHT / 2 - panel.ball.DIAMETER /2;
         
-        panel.p1.x = 10;
-        panel.p1.y = Pong.HEIGHT / 2 - Paddle.HEIGHT / 2;
-        panel.p2.x = Pong.WIDTH - 10 - Paddle.WIDTH;
-        panel.p2.y = Pong.HEIGHT / 2 - Paddle.HEIGHT / 2;
+        panel.p1.location.x = 10;
+        panel.p1.location.y = Pong.HEIGHT / 2 - Paddle.HEIGHT / 2;
+        panel.p2.location.x = Pong.WIDTH - 10 - Paddle.WIDTH;
+        panel.p2.location.y = Pong.HEIGHT / 2 - Paddle.HEIGHT / 2;
         
         panel.p1Score = 0;
         panel.p2Score = 0;
