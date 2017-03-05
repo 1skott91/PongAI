@@ -1,5 +1,7 @@
+import java.awt.AWTException;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
 public class Paddle
@@ -91,6 +93,41 @@ public class Paddle
 				location.add(velocity);
 			}
 		 }
+	}
+	
+	public void algorithm() throws AWTException
+	{
+			  Robot r = new Robot();
+	    	
+		      Vector e1 = Pong.panel.ballPositionNew.get(Pong.panel.ballPositionNew.size() - 1);
+			  Vector e2 = Pong.panel.ballPositionNew.get(Pong.panel.ballPositionNew.size() - 2);
+			  
+			  int xDiff = e2.x - e1.x;
+			  int yDiff = e2.y - e1.y;
+			  
+			  //direction?
+			  double x2 = Math.sqrt(xDiff);
+			  double y2 = Math.sqrt(yDiff);
+			  double result = x2 + y2;
+			  
+			  //angle
+			  int xDiff1 = e2.x - e1.x;
+			  int yDiff1 = e2.y - e1.y;
+			  double result1 =  Math.atan2(yDiff1, xDiff1) * 180.0 / Math.PI;
+	
+			  //System.out.println(e2 + "/" + e1);
+			  System.out.println(result1);
+			  
+			  if (result1 > 0)
+			  {
+				r.keyRelease(KeyEvent.VK_DOWN);
+				r.keyPress(KeyEvent.VK_UP);
+			  }
+			  else
+			  {
+				r.keyRelease(KeyEvent.VK_UP);
+				r.keyPress(KeyEvent.VK_DOWN);
+			  }
 	}
     
 //    public Rectangle getBounds() 

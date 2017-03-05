@@ -17,6 +17,11 @@ public class Ball
 	{
 		this.game = game;
 	}
+	
+	public void update() throws InterruptedException
+	{
+		checkCollision();
+	}
 
 	
 	public void checkCollision() throws InterruptedException
@@ -111,6 +116,17 @@ public class Ball
 		
 		location.x = Pong.WIDTH / 2 - DIAMETER / 2;
 		location.y = Pong.HEIGHT / 2 - DIAMETER / 2;
+	}
+	
+	public Vector getBallOldPosition()
+	{
+		int oldX = location.x;
+		int oldY = location.y;
+		
+		Vector oldLocation = new Vector (oldX, oldY, 0 );
+		
+		return oldLocation;
+		
 	}
 	
 	

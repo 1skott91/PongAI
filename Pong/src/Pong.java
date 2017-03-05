@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import javax.swing.*;
 
 public class Pong extends JFrame
@@ -40,8 +41,17 @@ public class Pong extends JFrame
         return panel;
     }
 	
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
       new Pong();
+      
+//      for (int i = 0; i < 10; i ++)
+//      {
+//    	  Pong.panel.update();
+//      }
+//      Vector e = Pong.panel.ballPosition.get(Pong.panel.ballPosition.size() - 1);
+//	  Vector e1 = Pong.panel.ballPosition.get(Pong.panel.ballPosition.size() - 2);
+//	  System.out.println(Pong.panel.ballPosition.toString());
+//	  System.out.println(e + "/" + e1);
     }
 	
 }

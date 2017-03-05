@@ -1,10 +1,13 @@
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -15,6 +18,8 @@ public class Panel extends JPanel implements ActionListener, KeyListener
 	Paddle p1;
 	Paddle p2;
 	Ball ball;
+	ArrayList <Vector> ballPosition;
+	ArrayList <Vector> ballPositionNew;
 	
 	int p1Score = 0;
 	int p2Score = 0;
@@ -36,6 +41,12 @@ public class Panel extends JPanel implements ActionListener, KeyListener
 //        p2.start();
 //        ball.start();
         addKeyListener(this);
+        
+        ballPosition = new ArrayList<Vector>();
+        ballPositionNew = new ArrayList<Vector>();
+        
+        ballPosition.add(ball.location);
+        ballPositionNew.add(ball.getBallOldPosition());
         
 	}
 	
@@ -69,28 +80,37 @@ public class Panel extends JPanel implements ActionListener, KeyListener
         
         g2d.drawString(String.valueOf(p1Score), 300, 20);
         g2d.drawString(String.valueOf(p2Score), 330, 20);
-        
-        
+
     }
     
-    public void update() throws InterruptedException
+    public void update() throws InterruptedException, AWTException
     {
-    	p2.playerControls();
+    	
     	p1.botAi();
-    	ball.checkCollision();
+    	ball.update();
+    	ballPosition.add(ball.location);
+    	ballPositionNew.add(ball.getBallOldPosition());
+    	p2.playerControls(); // needed to be able to use algorithm since it uses simulated key presses
+    	p2.algorithm();
+    	
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
 		try {
+			
 			update();
-		} catch (InterruptedException e1) {
+			
+			
+		} catch (InterruptedException | AWTException e3) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e3.printStackTrace();
 		}
+		
 		repaint();
 	}
+	
 	
 	public void keyTyped(KeyEvent e) {}
 	
