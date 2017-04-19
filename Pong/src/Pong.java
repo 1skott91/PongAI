@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -41,7 +42,7 @@ public class Pong extends JFrame
         return panel;
     }
 	
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
       new Pong();
       
 //      for (int i = 0; i < 10; i ++)
@@ -52,6 +53,10 @@ public class Pong extends JFrame
 //	  Vector e1 = Pong.panel.ballPosition.get(Pong.panel.ballPosition.size() - 2);
 //	  System.out.println(Pong.panel.ballPosition.toString());
 //	  System.out.println(e + "/" + e1);
+      
+//      panel.screenshotEachFrame();
+//      panel.screenshotEachFrame();
+//      panel.screenshotEachFrame();
     }
 	
 }

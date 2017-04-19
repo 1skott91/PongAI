@@ -128,16 +128,10 @@ public class Ball
 		return oldLocation;
 		
 	}
-	
-	
-	
-    public Rectangle getBounds() 
-    {
-        return new Rectangle(location.x, location.y, DIAMETER, DIAMETER);
-    }
     
     public void paint(Graphics2D g) {
-        g.setColor(Color.WHITE);
+    	g.setColor(Color.WHITE);
         g.fillOval(location.x, location.y, DIAMETER, DIAMETER);
+        g.drawOval(location.x, location.y, DIAMETER, DIAMETER);
     }
 }

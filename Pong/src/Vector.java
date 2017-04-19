@@ -29,8 +29,9 @@ public class Vector
 	}
 	
 	@Override
-	public String toString() {
-		  return "x: " + x + " y: " + y;
-		}
+	public String toString() 
+	{
+		return "x: " + x + " y: " + y;
+	}
 
 }

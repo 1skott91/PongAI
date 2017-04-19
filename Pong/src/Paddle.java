@@ -99,8 +99,9 @@ public class Paddle
 	{
 			  Robot r = new Robot();
 	    	
-		      Vector e1 = Pong.panel.ballPositionNew.get(Pong.panel.ballPositionNew.size() - 1);
-			  Vector e2 = Pong.panel.ballPositionNew.get(Pong.panel.ballPositionNew.size() - 2);
+			  //getting last two positions from the array
+		      Vector e1 = Pong.panel.ballPositionOld.get(Pong.panel.ballPositionOld.size() - 1);
+			  Vector e2 = Pong.panel.ballPositionOld.get(Pong.panel.ballPositionOld.size() - 2);
 			  
 			  int xDiff = e2.x - e1.x;
 			  int yDiff = e2.y - e1.y;
@@ -116,24 +117,24 @@ public class Paddle
 			  double result1 =  Math.atan2(yDiff1, xDiff1) * 180.0 / Math.PI;
 	
 			  //System.out.println(e2 + "/" + e1);
-			  System.out.println(result1);
+			  //System.out.println(result1);
 			  
 			  if (result1 > 0)
 			  {
-				r.keyRelease(KeyEvent.VK_DOWN);
-				r.keyPress(KeyEvent.VK_UP);
+//				r.keyRelease(KeyEvent.VK_DOWN);
+//				r.keyPress(KeyEvent.VK_UP);
+				downPressed = false;
+				upPressed = true;
 			  }
 			  else
 			  {
-				r.keyRelease(KeyEvent.VK_UP);
-				r.keyPress(KeyEvent.VK_DOWN);
+//				r.keyRelease(KeyEvent.VK_UP);
+//				r.keyPress(KeyEvent.VK_DOWN);
+				downPressed = true;
+				upPressed = false;
 			  }
 	}
     
-//    public Rectangle getBounds() 
-//    {
-//        return new Rectangle(x, y, WIDTH, HEIGHT);
-//    }
     
     public void paint(Graphics2D g) 
     {
