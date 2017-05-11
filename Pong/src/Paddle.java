@@ -12,8 +12,8 @@ public class Paddle
     Vector location;
     Vector velocity;
     
-    private boolean upPressed = false;
-    private boolean downPressed = false;
+    boolean upPressed = false;
+    boolean downPressed = false;
     
     public Paddle (int startX, int startY)
     {
@@ -117,7 +117,7 @@ public class Paddle
 			  double result1 =  Math.atan2(yDiff1, xDiff1) * 180.0 / Math.PI;
 	
 			  //System.out.println(e2 + "/" + e1);
-			  //System.out.println(result1);
+			 //System.out.println(result1);
 			  
 			  if (result1 > 0)
 			  {

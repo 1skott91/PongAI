@@ -11,8 +11,6 @@ public class Ball
     Vector location = new Vector (Pong.WIDTH / 2 - DIAMETER / 2, Pong.HEIGHT / 2 - DIAMETER / 2, 0 );
 	Vector velocity = new Vector (-4, 5, 0);
 	
-
-	
 	public Ball(Pong game)
 	{
 		this.game = game;
@@ -111,8 +109,20 @@ public class Ball
 	
 	public void resetBall()
 	{
-		velocity.x = -4;
-	    velocity.y = 5;
+		
+		int randomX = -4 + (int) (Math.random() * ((8 - (-4)) + 1));
+		int randomY =  4 + (int) (Math.random() * ((8 - 4) + 1));
+		
+		if (randomX != 0 && randomX != 1 && randomX != -1)
+		{
+			velocity.x = randomX;
+		    velocity.y = randomY;
+		}
+		else
+		{
+			velocity.x = -4;
+			velocity.y = 5;
+		}
 		
 		location.x = Pong.WIDTH / 2 - DIAMETER / 2;
 		location.y = Pong.HEIGHT / 2 - DIAMETER / 2;

@@ -18,6 +18,7 @@ public class Pong extends JFrame
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         pack();
         setVisible(true);
+        setAlwaysOnTop(true);
 	}
 	
 	public void gameOver() throws InterruptedException
@@ -44,19 +45,7 @@ public class Pong extends JFrame
 	
     public static void main(String[] args) throws InterruptedException, IOException {
       new Pong();
-      
-//      for (int i = 0; i < 10; i ++)
-//      {
-//    	  Pong.panel.update();
-//      }
-//      Vector e = Pong.panel.ballPosition.get(Pong.panel.ballPosition.size() - 1);
-//	  Vector e1 = Pong.panel.ballPosition.get(Pong.panel.ballPosition.size() - 2);
-//	  System.out.println(Pong.panel.ballPosition.toString());
-//	  System.out.println(e + "/" + e1);
-      
-//      panel.screenshotEachFrame();
-//      panel.screenshotEachFrame();
-//      panel.screenshotEachFrame();
+     
     }
 	
 }
